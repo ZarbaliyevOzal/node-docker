@@ -23,7 +23,12 @@ services:
       MYSQL_DATABASE: node_docker
     ports:
       - 3306:3306
+  redis:
+    image: redis:alpine
+    volumes:
+      - node-docker-redis-data:/data
 
 volumes:
   node-docker-mysql-data:
+  node-docker-redis-data:
       
