@@ -12,6 +12,10 @@ app.get('/test', (req, res) => {
   res.send('test route')
 })
 
+app.get('/test/foo', (req, res) => {
+  res.send('test route foo')
+})
+
 app.listen(process.env.APP_PORT, () => {
   console.log(`Example app listening at http://localhost:${process.env.APP_PORT}`)
 })
