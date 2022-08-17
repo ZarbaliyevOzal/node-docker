@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  app:
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    # command: sh -c "npm install && npm run dev"
+    container_name: nodedocker-app
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+
+  mysql:
+    image: mysql:latest
+    container_name: nodedocker-mysql
+    environment:
+      MYSQL_HOST: ${DB_HOST}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DB: ${DB_DATABASE}
+    volumes:
+      - node-docker-mysql-data:/var/lib/mysql
+  
+  redis:
+    image: redis:alpine
+    container_name: nodedocker-redis
+    volumes:
+      - node-docker-redis-data:/data
+
+volumes:
+  node-docker-mysql-data:
+  node-docker-redis-data:
+      

@@ -3,8 +3,9 @@ require('dotenv').config()
 const express = require('express')
 const redis = require('redis');
 const app = express()
+const knex = require('knex')
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
   res.send('Hello World!')
 })
 
